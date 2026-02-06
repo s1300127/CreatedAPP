@@ -15,18 +15,23 @@ namespace AvaloniaApplication1{
                 response = "Please provide a valid pcap file path.";
                 return response;
             }
+            try{
+                using (var device = new CaptureFileReaderDevice(filePath))
+                {
+                    device.OnPacketArrival += new PacketArrivalEventHandler((sender, e) => response = Device_OnPacketArrival(sender, e, response));
 
-            using (var device = new CaptureFileReaderDevice(filePath))
+                    //response+="Starting packet read from file...";
+                    device.Open();
+                    device.Capture();
+                    device.Close();
+                    //response+="Finished reading packets.";
+                }
+                return response;
+            }catch(Exception ex)
             {
-                device.OnPacketArrival += new PacketArrivalEventHandler((sender, e) => response = Device_OnPacketArrival(sender, e, response));
-
-                //response+="Starting packet read from file...";
-                device.Open();
-                device.Capture();
-                device.Close();
-                //response+="Finished reading packets.";
+                response = $"An error occurred: {ex.Message}";
+                return response;
             }
-            return response;
         }
 
         private static string Device_OnPacketArrival(object sender, PacketCapture e, string output)
