@@ -1,0 +1,15 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="AvaloniaApplication5.Controls.FileInputControl">
+        <Grid RowDefinitions="Auto,Auto,Auto" ColumnDefinitions="Auto,*">
+            <TextBlock Grid.Row="0" Grid.Column="0"
+                    Text = "Input pcap FilePath:" />
+            <TextBox Grid.Row="1" Grid.Column="0"
+                    Name = "InputedFilePath"
+                    Width = "800"
+                    Height = "25"/>
+            <Button Grid.Row = "2" Grid.Column="0"
+                    Content = "Load File"
+                    Click = "MyButton_Clicked"/>
+        </Grid>
+</UserControl>

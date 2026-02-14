@@ -1,0 +1,19 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:models="clr-namespace:AvaloniaApplication5.Models"
+        x:Class="AvaloniaApplication5.Controls.NodeControl"
+        x:DataType="models:Node">
+
+    <Border Background="LightGray"
+            BorderBrush="Black"
+            BorderThickness="2"
+            CornerRadius="3">
+        <StackPanel>
+            <TextBlock 
+                    Text="{Binding Name}"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    FontSize="11"/>
+        </StackPanel>
+    </Border>
+</UserControl>
